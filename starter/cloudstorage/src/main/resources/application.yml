@@ -1,0 +1,33 @@
+server:
+  port: 9055
+spring:
+  application:
+    name: superDrive
+  datasource:
+    name: cloudstorage
+    url: jdbc:h2:mem:cloudstorage;DB_CLOSE_DELAY=-1;IGNORECASE=TRUE;DATABASE_TO_UPPER=false
+    username: dbuser
+    password: dbp4ss
+    driverClassName: org.h2.Driver
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: false
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        default_schema: cloudstorage
+    show-sql: true
+    format_sql: true
+    generate-ddl: false
+    hibernate.ddl-auto: none
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
